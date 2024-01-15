@@ -7,6 +7,7 @@ export PKGVERS=`sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION`
 export DATETIME=`date +%Y-%m-%d\ %H:%M:%S`
 export DATETIMEUTC=`date -u +%Y-%m-%d\ %H:%M:%S`
 export DATE=`date +%Y.%-m.%-d`
+export DATETWODIGITYEARS=`date +%y.%-m.%-d`
 
 #export PWD=$(abspath $(lastword $(MAKEFILE_LIST)))
 
@@ -14,7 +15,7 @@ all: build
 
 .ONESHELL:
 fix_description_version:
-	sed -i "s/^Version: .*/Version: $(DATE)/" DESCRIPTION
+	sed -i "s/^Version: .*/Version: $(DATETWODIGITYEARS)/" DESCRIPTION
 	sed -i '/Date\/Publication:/d' DESCRIPTION # delete if exists
 	echo "Date/Publication: $(DATETIMEUTC) UTC" >> DESCRIPTION #append to bottom
 	chmod -R 777 ..
