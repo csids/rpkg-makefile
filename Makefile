@@ -15,7 +15,7 @@ all: build
 
 .ONESHELL:
 fix_description_version:
-	sed -i "s/^Version: .*/Version: $(DATETWODIGITYEARS)/" DESCRIPTION
+	sed -i "s/^Version: .*/Version: $(DATE)/" DESCRIPTION
 	sed -i '/Date\/Publication:/d' DESCRIPTION # delete if exists
 	echo "Date/Publication: $(DATETIMEUTC) UTC" >> DESCRIPTION #append to bottom
 	chmod -R 777 ..
